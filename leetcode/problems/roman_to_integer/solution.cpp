@@ -1,33 +1,21 @@
 class Solution {
 public:
     int romanToInt(string s) {
-        
-        unordered_map<char,int> val;
-        val['I'] = 1;
-        val['V'] = 5;
-        val['X'] = 10;
-        val['L'] = 50;
-        val['C'] = 100;
-        val['D'] = 500;
-        val['M'] = 1000;
-        
-        vector<int> vals;
-        
-        for(char c:s) {
-            vals.push_back(val[c]);
+        unordered_map<char, int> m;
+        m['I'] =1;
+        m['V'] = 5;
+        m['X'] = 10;
+        m['L'] = 50;
+        m['C'] = 100;
+        m['D'] = 500;
+        m['M'] = 1000;
+
+        int ans=0;
+
+        for(int i=0;i<s.size()-1;i++) {
+            if(m[s[i]]<m[s[i+1]]) ans -= m[s[i]]; else ans += m[s[i]];   
         }
-        
-        int prev = 1001;
-        int total = 0;
-        for(int v:vals) {
-            if(prev<v) {
-                total -= 2*prev;
-            }
-            total+=v;
-            prev = v;
-        }
-        
-        return total;
-        
+        ans+=m[s[s.size()-1]];
+        return ans;
     }
 };

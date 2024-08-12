@@ -1,22 +1,25 @@
-#include "bits/stdc++.h"
-using namespace std;
-
 class Solution {
 public:
-    static bool sortBaloons(vector<int> &b1,vector<int> &b2) {
-        return b1[1]<b2[1];
-    }
     int findMinArrowShots(vector<vector<int>>& points) {
-        sort(points.begin(),points.end(),sortBaloons);
-        long currentEnd = LONG_MIN;
-        cout<<currentEnd;
-        int arrowsShot = 0;
-        for(vector<int> point:points) {
-            if(point[0]>currentEnd) {
-                arrowsShot++;
-                currentEnd = point[1];
+        if(points.size()==0) return 0;
+        ios_base::sync_with_stdio(false);
+
+        // vector<vector<int>> arrows;
+        sort(points.begin(),points.end());
+        vector<int> current = points[0];
+        int arrows=0;
+        for(int i=1;i<points.size();i++) {
+            if(points[i][0]<=current[1]) {
+                current[0] = points[i][0];
+                current[1] = min(current[1],points[i][1]);
+            } else{
+                arrows++;
+                current[0] = points[i][0];
+                current[1] = points[i][1];
             }
         }
-        return arrowsShot;
-    }
+        arrows++;
+        return arrows;
+    }   
+
 };

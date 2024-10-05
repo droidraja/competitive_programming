@@ -1,0 +1,15 @@
+{
+    "window.zoomLevel": 0.5,
+    "workbench.editor.closeEmptyGroups": false,
+    "workbench.editor.closeOnFileDelete": true,
+    "files.associations": {
+        "iostream": "cpp",
+        "ostream": "cpp",
+        "chrono": "cpp",
+        "span": "cpp",
+        "numeric": "cpp",
+        "string": "cpp",
+        "format": "cpp",
+        "forward_list": "cpp"
+    }
+}
